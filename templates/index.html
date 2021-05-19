@@ -5,9 +5,28 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        * {
+    box-sizing: border-box;
+    border-color: darkmagenta;
+    border-radius: 1rem;
+    background-color: antiquewhite;
+        }
+        button{
+            border-radius: 1rem;
+            width: 5rem;
+            height: 1.5rem;
+            background-color: chocolate;
+        }
+        .tweet-list{
+            padding-bottom:3px;
+        }
+
+    </style>
 </head>
 <body>
     <div>
+        <h2>Writers</h2>
         <form method="post">
             {% csrf_token %}
             {{form.as_p}}
@@ -15,9 +34,15 @@
         </form>
     </div>
     <div>
-    {% for tweet in tweets %}
+    <h4>Tweets</h4>
+
+        {% for tweet in tweets %}
+            <div class="tweet-list">
         <p>{{ tweet.tweet_body }}</p>
+        <p>{{ tweet.tweet_date }}</p>
+            </div>
     {% endfor %}
+
     </div>
 </body>
 </html>
